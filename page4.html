@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="page4.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sopra Steria - New Resource Request</title>
+</head>
+<body>
+    <header>
+        <img src="sopraicon.png" alt="" class="icon"> 
+        <h1 class="main">Sopra Steria - New Resource Request</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#allocate">Allocate Resources</a></li>
+            <li><a href="#view">View Allocations</a></li>
+            <li><a href="#reports">Reports</a></li>
+            <li><a href="#new-request">New Request</a></li>
+            <li><a href="#notification">Notifications</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="card">
+            <h2>Submit New Resource Request</h2>
+            <form id="newRequestForm">
+                <div>
+                    <label for="projectName">Project Name:</label>
+                    <input type="text" id="projectName" name="projectName" required>
+                </div>
+                <div>
+                    <label for="resourceType">Resource Type:</label>
+                    <select id="resourceType" name="resourceType" required>
+                        <option value="">Select a resource type</option>
+                        <option value="developer">Developer</option>
+                        <option value="designer">Designer</option>
+                        <option value="project-manager">Project Manager</option>
+                        <option value="business-analyst">Business Analyst</option>
+                        <option value="qa-tester">QA Tester</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="requiredSkills">Required Skills:</label>
+                    <input type="text" id="requiredSkills" name="requiredSkills" placeholder="Enter skills and press Enter">
+                    <div class="skill-tags" id="skillTags"></div>
+                </div>
+                <div>
+                    <label for="startDate">Start Date:</label>
+                    <input type="date" id="startDate" name="startDate" required>
+                </div>
+                <div>
+                    <label for="endDate">End Date:</label>
+                    <input type="date" id="endDate" name="endDate" required>
+                </div>
+                <div>
+                    <label for="allocationPercentage">Allocation Percentage:</label>
+                    <input type="number" id="allocationPercentage" name="allocationPercentage" min="0" max="100" required>
+                </div>
+                <div>
+                    <label for="location">Preferred Location:</label>
+                    <input type="text" id="location" name="location" placeholder="e.g., Paris, London, Remote">
+                </div>
+                <div>
+                    <label for="additionalInfo">Additional Information:</label>
+                    <textarea id="additionalInfo" name="additionalInfo" placeholder="Provide any additional details or requirements"></textarea>
+                </div>
+                <button type="submit">Submit Request</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillInput = document.getElementById('requiredSkills');
+            const skillTags = document.getElementById('skillTags');
+
+            skillInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    addSkill(this.value.trim());
+                    this.value = '';
+                }
+            });
+
+            function addSkill(skill) {
+                if (skill && !document.querySelector(`.skill-tag[data-skill="${skill}"]`)) {
+                    const tag = document.createElement('span');
+                    tag.classList.add('skill-tag');
+                    tag.setAttribute('data-skill', skill);
+                    tag.innerHTML = `${skill} <span class="remove-skill">&times;</span>`;
+                    skillTags.appendChild(tag);
+
+                    tag.querySelector('.remove-skill').addEventListener('click', function() {
+                        tag.remove();
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

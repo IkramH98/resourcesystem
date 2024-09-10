@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="page5.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sopra Steria - Approval Process</title>
+</head>
+<body>
+    <header>
+        <img src="sopraicon.png" alt="" class="icon"> 
+        <h1 class="main">Sopra Steria - Approval Process</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#allocate">Allocate Resources</a></li>
+            <li><a href="#view">View Allocations</a></li>
+            <li><a href="#reports">Reports</a></li>
+            <li><a href="#approval">Approval Process</a></li>
+            <li><a href="#notification">Notifications</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="card">
+            <h2>Pending Approvals</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Project</th>
+                        <th>Resource Type</th>
+                        <th>Requested By</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>REQ001</td>
+                        <td>Project Alpha</td>
+                        <td>Senior Developer</td>
+                        <td>John Smith</td>
+                        <td><span class="status status-pending">Pending</span></td>
+                        <td class="action-buttons">
+                            <button class="btn btn-view" onclick="viewDetails('REQ001')">View</button>
+                            <button class="btn btn-approve" onclick="approveRequest('REQ001')">Approve</button>
+                            <button class="btn btn-reject" onclick="rejectRequest('REQ001')">Reject</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>REQ002</td>
+                        <td>Project Beta</td>
+                        <td>UX Designer</td>
+                        <td>Jane Doe</td>
+                        <td><span class="status status-pending">Pending</span></td>
+                        <td class="action-buttons">
+                            <button class="btn btn-view" onclick="viewDetails('REQ002')">View</button>
+                            <button class="btn btn-approve" onclick="approveRequest('REQ002')">Approve</button>
+                            <button class="btn btn-reject" onclick="rejectRequest('REQ002')">Reject</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Recent Approvals</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Project</th>
+                        <th>Resource Type</th>
+                        <th>Requested By</th>
+                        <th>Status</th>
+                        <th>Approved/Rejected By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>REQ003</td>
+                        <td>Project Gamma</td>
+                        <td>Project Manager</td>
+                        <td>Mike Johnson</td>
+                        <td><span class="status status-approved">Approved</span></td>
+                        <td>Sarah Thompson</td>
+                    </tr>
+                    <tr>
+                        <td>REQ004</td>
+                        <td>Project Delta</td>
+                        <td>Business Analyst</td>
+                        <td>Emily Brown</td>
+                        <td><span class="status status-rejected">Rejected</span></td>
+                        <td>David Wilson</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="requestModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Request Details</h2>
+            <div id="requestDetails"></div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById("requestModal");
+        const span = document.getElementsByClassName("close")[0];
+        const requestDetails = document.getElementById("requestDetails");
+
+        function viewDetails(requestId) {
+            modal.style.display = "block";
+            // In a real application, you would fetch the details from a server
+            requestDetails.innerHTML = `
+                <p><strong>Request ID:</strong> ${requestId}</p>
+                <p><strong>Project:</strong> Project Alpha</p>
+                <p><strong>Resource Type:</strong> Senior Developer</p>
+                <p><strong>Required Skills:</strong> Java, Spring Boot, Microservices</p>
+                <p><strong>Start Date:</strong> 2024-10-01</p>
+                <p><strong>End Date:</strong> 2025-03-31</p>
+                <p><strong>Allocation:</strong> 100%</p>
+                <p><strong>Additional Info:</strong> Need an experienced developer for a critical project phase.</p>
+            `;
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function approveRequest(requestId) {
+            alert(`Request ${requestId} has been approved.`);
+            // In a real application, you would send this to a server and update the UI
+        }
+
+        function rejectRequest(requestId) {
+            alert(`Request ${requestId} has been rejected.`);
+            // In a real application, you would send this to a server and update the UI
+        }
+    </script>
+</body>
+</html>
