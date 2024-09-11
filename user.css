@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+}
+header {
+    background: white;
+    color: black;
+    padding-top: 30px;
+    min-height: 70px;
+}
+header h1 {
+    margin: 0;
+    text-align: center;
+}
+nav {
+    background-color: #dc1c2c;
+    padding: 0.5rem;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+.user-info {
+    background: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.user-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.user-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.user-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+.user-role {
+    font-size: 18px;
+    color: #666;
+}
+.user-details {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.user-details > div {
+    flex-basis: 48%;
+    margin-bottom: 20px;
+}
+.user-skills, .user-projects {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+}
+.skill-tag, .project-tag {
+    display: inline-block;
+    background: #dc1c2c;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin: 5px;
+    font-size: 14px;
+}
+.chart-container {
+    margin-top: 20px;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #dc1c2c;
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+ /* sopra icon */
+ .icon{
+    width: 120px;
+    height: auto;
+      float: left;
+      position: relative; top: -17px;
+      position: relative; right: -30px;
+
+}

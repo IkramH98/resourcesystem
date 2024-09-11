@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="user.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information - Sopra Steria RMS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+</head>
+<body>
+    <header>
+        <img src="sopraicon.png" alt="" class="icon"> 
+        <div class="container">
+            <h1>User Information</h1>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="dashboard.html ">Dashboard</a></li>
+            <li><a href="newrequest.html">New Request</a></li>
+            <li><a href="allocateresources.html">Allocate Resources</a></li>
+            <li><a href="insights.html">Insights</a></li>
+            <li><a href="approval.html">Approval Process</a></li>
+            <li><a href="user.html">Notifications</a></li>
+        </ul>
+    </nav>
+    
+
+    <div class="container">
+        <div class="user-info">
+            <div class="user-header">
+                <img src="avatar.png" alt="User Avatar" class="user-avatar">
+                <div>
+                    <div class="user-name">Jane Smith</div>
+                    <div class="user-role">Senior Software Developer</div>
+                </div>
+            </div>
+            <div class="user-details">
+                <div>
+                    <h3>Contact Information</h3>
+                    <p><strong>Email:</strong> jane.smith@soprasteria.com</p>
+                    <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                    <p><strong>Location:</strong> New York, USA</p>
+                </div>
+                <div>
+                    <h3>Employment Details</h3>
+                    <p><strong>Employee ID:</strong> SS12345</p>
+                    <p><strong>Department:</strong> Software Development</p>
+                    <p><strong>Join Date:</strong> January 15, 2020</p>
+                </div>
+                <div class="user-skills">
+                    <h3>Skills</h3>
+                    <div class="skill-tag">Java</div>
+                    <div class="skill-tag">Python</div>
+                    <div class="skill-tag">React</div>
+                    <div class="skill-tag">Node.js</div>
+                    <div class="skill-tag">AWS</div>
+                    <div class="skill-tag">Agile Methodologies</div>
+                </div>
+                <div class="user-projects">
+                    <h3>Current Projects</h3>
+                    <div class="project-tag">Project Alpha</div>
+                    <div class="project-tag">Client X Migration</div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <h3>Utilization Over Time</h3>
+                <canvas id="utilizationChart"></canvas>
+            </div>
+            <div style="margin-top: 20px;">
+                <button class="btn" onclick="editUserInfo()">Edit Information</button>
+                <button class="btn" onclick="viewPerformance()">View Performance Report</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Utilization chart
+        const ctx = document.getElementById('utilizationChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Utilization %',
+                    data: [75, 82, 90, 85, 88, 95],
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+        // Placeholder functions for button actions
+        function editUserInfo() {
+            alert('Edit user information functionality to be implemented');
+        }
+
+        function viewPerformance() {
+            alert('View performance report functionality to be implemented');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="dashboard.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sopra Steria Resource Management System</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+</head>
+<body>
+    <header>
+        <img src="sopraicon.png" alt="" class="icon"> 
+        <div class="container">
+            <div id="branding">
+                <h1 class="main">Dashboard</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html ">Dashboard</a></li>
+                    <li><a href="newrequest.html">New Request</a></li>
+                    <li><a href="allocateresources.html">Allocate Resources</a></li>
+                    <li><a href="insights.html">Insights</a></li>
+                    <li><a href="approval.html">Approval Process</a></li>
+                    <li><a href="user.html">User Information</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="dashboard">
+
+            <div class="dashboard">
+                <div class="dashboard-item">
+                    <h3>Total Resources</h3>
+                    <p id="totalResources">Loading...</p>
+                </div>
+                <div class="dashboard-item">
+                    <h3>Active Projects</h3>
+                    <p id="activeProjects">Loading...</p>
+                </div>
+                <div class="dashboard-item">
+                    <h3>Resource Utilization</h3>
+                    <p id="resourceUtilization">Loading...</p>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="utilizationChart"></canvas>
+            </div>
+        </section>
+
+        <section id="resources">
+            <h2>Resources</h2>
+            <table id="resourcesTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Skills</th>
+                        <th>Availability</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Resources will be dynamically added here -->
+                </tbody>
+            </table>
+            <button class="btn" onclick="addResource()">Add Resource</button>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <table id="projectsTable">
+                <thead>
+                    <tr>
+                        <th>Project Name</th>
+                        <th>Client</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Projects will be dynamically added here -->
+                </tbody>
+            </table>
+            <button class="btn" onclick="addProject()">Add Project</button>
+        </section>
+
+        <section id="allocations">
+            <h2>Resource Allocations</h2>
+            <table id="allocationsTable">
+                <thead>
+                    <tr>
+                        <th>Resource</th>
+                        <th>Project</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Allocation %</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Allocations will be dynamically added here -->
+                </tbody>
+            </table>
+            <button class="btn" onclick="addAllocation()">Add Allocation</button>
+        </section>
+    </div>
+
+    <script>
+        // Sample data (replace with actual data from backend)
+        const resources = [
+            { name: "John Doe", skills: "Java, Python", availability: "80%" },
+            { name: "Jane Smith", skills: "JavaScript, React", availability: "100%" },
+        ];
+
+        const projects = [
+            { name: "Project A", client: "Client X", startDate: "2024-01-01", endDate: "2024-06-30", status: "Active" },
+            { name: "Project B", client: "Client Y", startDate: "2024-03-01", endDate: "2024-12-31", status: "Planning" },
+        ];
+
+        const allocations = [
+            { resource: "John Doe", project: "Project A", startDate: "2024-01-01", endDate: "2024-03-31", allocation: "50%" },
+            { resource: "Jane Smith", project: "Project B", startDate: "2024-03-01", endDate: "2024-06-30", allocation: "100%" },
+        ];
+
+        // Update dashboard
+        document.getElementById('totalResources').textContent = resources.length;
+        document.getElementById('activeProjects').textContent = projects.filter(p => p.status === 'Active').length;
+        document.getElementById('resourceUtilization').textContent = '75%'; // Calculate based on allocations
+
+        // Create utilization chart
+        const ctx = document.getElementById('utilizationChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: resources.map(r => r.name),
+                datasets: [{
+                    label: 'Resource Utilization',
+                    data: resources.map(r => parseInt(r.availability)),
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+        // Populate tables
+        function populateTable(tableId, data, columns) {
+            const table = document.getElementById(tableId).getElementsByTagName('tbody')[0];
+            table.innerHTML = '';
+            data.forEach(item => {
+                const row = table.insertRow();
+                columns.forEach(column => {
+                    const cell = row.insertCell();
+                    cell.textContent = item[column];
+                });
+                const actionsCell = row.insertCell();
+                actionsCell.innerHTML = '<button class="btn" onclick="editItem(\'' + tableId + '\', \'' + item.name + '\')">Edit</button>';
+            });
+        }
+
+        populateTable('resourcesTable', resources, ['name', 'skills', 'availability']);
+        populateTable('projectsTable', projects, ['name', 'client', 'startDate', 'endDate', 'status']);
+        populateTable('allocationsTable', allocations, ['resource', 'project', 'startDate', 'endDate', 'allocation']);
+
+        // Placeholder functions for adding/editing items
+        function addResource() {
+            alert('Add resource functionality to be implemented');
+        }
+
+        function addProject() {
+            alert('Add project functionality to be implemented');
+        }
+
+        function addAllocation() {
+            alert('Add allocation functionality to be implemented');
+        }
+
+        function editItem(tableId, itemName) {
+            alert('Edit functionality to be implemented for ' + itemName + ' in ' + tableId);
+        }
+    </script>
+</body>
+</html>
