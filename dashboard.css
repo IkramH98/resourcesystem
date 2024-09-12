@@ -1,5 +1,7 @@
 .main{
     color: #333333;
+    position: relative;
+    padding: 40px 0px 0px 0px;
 } 
 
 body {
@@ -23,11 +25,14 @@ header {
     color: black;
     text-align: center;
     /* padding: 1rem; */
+ 
 }
 
 nav {
     background-color: #dc1c2c;
     padding: 0.5rem;
+   
+  
 }
 
 nav ul {
@@ -103,10 +108,31 @@ tr:hover {
 
  /* sopra icon */
  .icon{
-    width: 120px;
+    width: 130px;
     height: auto;
       float: left;
       position: relative; top: -17px;
       position: relative; right: -30px;
+
+}
+
+  /* sopra icon */
+  .icon{
+    width: 130px;
+    height: auto;
+      float: left;
+      padding-top: 15px;
+
+}
+.fonticon{
+    position: relative;
+    left: 80%;
+    /* width: 200px;
+    height: 120px; */
+    display: flex;
+   margin-left: 57px;
+   margin-top: -70px;
+
+  
 
 }

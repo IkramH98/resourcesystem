@@ -3,34 +3,54 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Login Form | CodingLab</title> 
+    <title>Login Form | CodingLab</title> 
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-	
-	<img src="sopralogo.png" alt=""> 
-
   </head>
   <body>
+    <img src="sopralogo.png" alt="Sopra Logo"> 
+
     <div class="container">
       <div class="wrapper">
-        <div class="title"><span>ResourceHub</span></div>
-        <form action="#">
+        <div class="title"><span>Sopra Steria</span></div>
+        <form id="loginForm">
           <div class="row">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Email" required>
+            <input id="username" type="text" placeholder="Email" required>
           </div>
           <div class="row">
             <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Password" required>
+            <input id="password" type="password" placeholder="Password" required>
           </div>
           <div class="pass"><a href="#">Forgot password?</a></div>
           <input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Remember me</label>
           <div class="row button">
             <input type="submit" value="Log in">
           </div>
-          <!-- <div class="signup-link">Not a member? <a href="#">Signup now</a></div> -->
         </form>
       </div>
     </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        var loginForm = document.getElementById("loginForm");
+        if (loginForm) {
+          loginForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let username = document.getElementById("username").value;
+            let password = document.getElementById('password').value;
+            
+            if (username === "Sadia" && password === "Sadia") {
+              window.location.href = "newrequest.html"; 
+            } else {
+              alert('Invalid username or password. Please try again.');
+            }
+          });
+        } else {
+          console.error("Login form not found");
+        }
+      });
+    </script>
   </body>
 </html>
