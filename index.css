@@ -153,3 +153,12 @@ ul {
   .active {
     background-color: #04AA6D;
   }
+  /* nav bar hover effect */
+nav ul li a {
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+}
+nav ul li a:hover {
+  background-color: #b81724;
+  border-radius: 5px;
+}
