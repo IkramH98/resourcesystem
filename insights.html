@@ -5,19 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insights</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <header>
         <img src="sopraicon.png" alt="" class="icon"> 
-        <h1 class="main">Insights</h1>
+        <h1 class="main">ResourceHub</h1>
+        <span class="fonticon">
+            <div class="w3-padding w3-xxlarge w3-text-black ">
+                <i class="fa fa-home"></i>
+                <i class="fa fa-search"></i>
+                <i class="fa fa-envelope"></i>
+                <i class="fa fa-info"></i>
+            </div>
+        </span>
     </header>
     
     <nav>
         <ul>
-            <li><a href="dashboard.html">Dashboard</a></li>
+            <!-- <li><a href="dashboard.html">Dashboard</a></li> -->
             <li><a href="newrequest.html">New Request</a></li>
-            <li><a href="allocateresources.html">Allocate Resources</a></li>
-            <li><a href="insights.html">Insights</a></li>
+            <!-- <li><a href="insights.html">Insights</a></li> -->
             <li><a href="approval.html">Approval Process</a></li>
             <li><a href="user.html">User Information</a></li>
         </ul>
@@ -28,18 +38,17 @@
             <div class="card">
                 <h2>Active Projects</h2>
                 <ul class="project-list">
-                    <li>Project Alpha</li>
-                    <li>Project Beta</li>
-                    <li>Project Gamma</li>
-                    <li>Project Delta</li>
+                    <li>ServicePulse Project</li>
+                    <li>ZenithCloud Project</li>
+                    <li>BuildBridge Project</li>
+                    <li>OpsFusion Project</li>
                 </ul>
             </div>
             
             <div class="card">
-                <h2>Resource Utilization</h2>
-                <div class="chart">
-                    [Resource Utilization Chart Placeholder]
-                </div>
+            
+            <iframe src="barchart.html" class="iframe"></iframe>
+              
             </div>
         </div>
         
@@ -84,7 +93,7 @@
         <div class="card">
             <h2>Resource Forecast</h2>
             <div class="chart">
-                [Resource Forecast Chart Placeholder]
+                <iframe src="gantchart.html" class="iframe" ></iframe>
             </div>
         </div>
     </div>

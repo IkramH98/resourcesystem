@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Information - Sopra Steria RMS</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 </head>
 <body>
     <header>
@@ -13,16 +17,24 @@
         <div class="container">
             <h1>User Information</h1>
         </div>
+        <span class="fonticon">
+            <div class="w3-padding w3-xxlarge w3-text-black ">
+                <i class="fa fa-home"></i>
+                <i class="fa fa-search"></i>
+                <i class="fa fa-envelope"></i>
+                <i class="fa fa-info"></i>
+            </div>
+        </span>
+        
     </header>
 
     <nav>
         <ul>
-            <li><a href="dashboard.html ">Dashboard</a></li>
+            <!-- <li><a href="dashboard.html ">Dashboard</a></li> -->
             <li><a href="newrequest.html">New Request</a></li>
-            <li><a href="allocateresources.html">Allocate Resources</a></li>
-            <li><a href="insights.html">Insights</a></li>
+            <li><a href="insights.html">ResourceHub</a></li>
             <li><a href="approval.html">Approval Process</a></li>
-            <li><a href="user.html">Notifications</a></li>
+            <!-- <li><a href="user.html">Notifications</a></li> -->
         </ul>
     </nav>
     
@@ -40,8 +52,8 @@
                 <div>
                     <h3>Contact Information</h3>
                     <p><strong>Email:</strong> jane.smith@soprasteria.com</p>
-                    <p><strong>Phone:</strong> +1 (555) 123-4567</p>
-                    <p><strong>Location:</strong> New York, USA</p>
+                    <p><strong>Phone:</strong> 44734687928</p>
+                    <p><strong>Location:</strong>  United Kingdom, London</p>
                 </div>
                 <div>
                     <h3>Employment Details</h3>
@@ -60,12 +72,12 @@
                 </div>
                 <div class="user-projects">
                     <h3>Current Projects</h3>
-                    <div class="project-tag">Project Alpha</div>
-                    <div class="project-tag">Client X Migration</div>
+                    <div class="project-tag"> BuildBrdige Project</div>
+                    <div class="project-tag">OpsFusion Project</div>
                 </div>
             </div>
             <div class="chart-container">
-                <h3>Utilization Over Time</h3>
+                <h3>Utilisation Over Time</h3>
                 <canvas id="utilizationChart"></canvas>
             </div>
             <div style="margin-top: 20px;">

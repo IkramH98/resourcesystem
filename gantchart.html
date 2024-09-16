@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Allocation Gantt Chart</title>
+    <link rel="stylesheet" href="gantchart.css">
+</head>
+<body>
+    <div class="gantt-chart">
+        <h2>Resource Allocation Gantt Chart</h2>
+        <div id="timeline-header" class="timeline-header"></div>
+        <div id="chart"></div>
+    </div>
+
+    <script>
+  
+        const resources = [
+            { name: "ServicePulse Project", tasks: [
+                { name: "Project 1", start: 0, duration: 3, color: "#3498db" },
+                { name: "Project 3", start: 5, duration: 2, color: "#e74c3c" }
+            ]},
+            { name: "ZenithCloud Project", tasks: [
+                { name: "Project 2", start: 1, duration: 4, color: "#2ecc71" },
+                { name: "Project 4", start: 7, duration: 3, color: "#f39c12" }
+            ]},
+            { name: "BuildBridge Project", tasks: [
+                { name: "Project 1", start: 2, duration: 2, color: "#3498db" },
+                { name: "Project 4", start: 6, duration: 4, color: "#f39c12" }
+            ]},
+            { name: "OpsFusion Project", tasks: [
+                { name: "Project 2", start: 0, duration: 3, color: "#2ecc71" },
+                { name: "Project 3", start: 4, duration: 3, color: "#e74c3c" }
+            ]}
+        ];
+
+        const weeks = 10;
+        const chart = document.getElementById('chart');
+        const timelineHeader = document.getElementById('timeline-header');
+
+        // Create timeline header
+        for (let i = 1; i <= weeks; i++) {
+            const weekDiv = document.createElement('div');
+            weekDiv.textContent = `Week ${i}`;
+            timelineHeader.appendChild(weekDiv);
+        }
+
+        resources.forEach(resource => {
+            const row = document.createElement('div');
+            row.className = 'gantt-row';
+
+            const nameDiv = document.createElement('div');
+            nameDiv.className = 'resource-name';
+            nameDiv.textContent = resource.name;
+
+            const timeline = document.createElement('div');
+            timeline.className = 'timeline';
+
+            resource.tasks.forEach(task => {
+                const bar = document.createElement('div');
+                bar.className = 'task-bar';
+                bar.style.left = `${(task.start / weeks) * 100}%`;
+                bar.style.width = `${(task.duration / weeks) * 100}%`;
+                bar.style.backgroundColor = task.color;
+
+                const tooltip = document.createElement('div');
+                tooltip.className = 'tooltip';
+                tooltip.textContent = `${task.name}: Week ${task.start + 1} to Week ${task.start + task.duration}`;
+
+                bar.appendChild(tooltip);
+                timeline.appendChild(bar);
+
+                bar.addEventListener('mouseover', () => {
+                    tooltip.style.opacity = 1;
+                });
+
+                bar.addEventListener('mouseout', () => {
+                    tooltip.style.opacity = 0;
+                });
+            });
+
+            row.appendChild(nameDiv);
+            row.appendChild(timeline);
+            chart.appendChild(row);
+        });
+    </script>
+</body>
+</html>

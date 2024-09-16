@@ -14,12 +14,10 @@
     
     <nav>
         <ul>
-            <li><a href="dashboard.html ">Dashboard</a></li>
-            <li><a href="newrequest.html">New Request</a></li>
-            <li><a href="allocateresources.html">Allocate Resources</a></li>
-            <li><a href="insights.html">Insights</a></li>
+        
             <li><a href="approval.html">Approval Process</a></li>
             <li><a href="user.html">User Information</a></li>
+            <li><a href="insights.html">ResourceHub</a></li>
         </ul>
     </nav>
     
@@ -32,7 +30,7 @@
                     <input type="text" id="projectName" name="projectName" required>
                 </div>
                 <div>
-                    <label for="resourceType">Resource Type:</label>
+                    <label for="resourceType">Role:</label>
                     <select id="resourceType" name="resourceType" required>
                         <option value="">Select a resource type</option>
                         <option value="developer">Developer</option>
@@ -43,9 +41,16 @@
                     </select>
                 </div>
                 <div>
-                    <label for="requiredSkills">Required Skills:</label>
-                    <input type="text" id="requiredSkills" name="requiredSkills" placeholder="Enter skills and press Enter">
-                    <div class="skill-tags" id="skillTags"></div>
+                    <label for="resourceType">Department:</label>
+                    <select id="resourceType" name="resourceType" required>
+                        <option value="">Select a Department</option>
+                        <option value="developer">DevOps</option>
+                        <option value="designer">Data & AI</option>
+                        <option value="project-manager">Cloud</option>
+                        <option value="business-analyst">ServiceNow</option>
+                        <option value="qa-tester">ITSM</option>
+                        <option value="qa-tester">Web Development</option>
+                    </select>
                 </div>
                 <div>
                     <label for="startDate">Start Date:</label>

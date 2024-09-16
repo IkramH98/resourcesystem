@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Allocation Bar Chart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <link rel="stylesheet" href="barchart.css">
+</head>
+<body>
+    <div class="chart-container">
+        <h1>Resource Allocation</h1>
+        <canvas id="resourceChart"></canvas>
+    </div>
+    <script>
+        const data = {
+            labels: ["ServicePulse Project","ZenithCloud Project", "BuildBridge Project", "OpsFusion Project"],
+            datasets: [
+                {
+                    label: 'Budget ($1000)',
+                    data: [300, 450, 200, 380, 270],
+                    backgroundColor: 'rgba(54, 162, 235, 0.8)',
+                },
+                {
+                    label: 'Man-hours (100h)',
+                    data: [250, 400, 180, 350, 300],
+                    backgroundColor: 'rgba(255, 99, 132, 0.8)',
+                }
+            ]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Resource Allocation Across Projects'
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: false,
+                    },
+                    y: {
+                        stacked: false,
+                        beginAtZero: true
+                    }
+                }
+            },
+        };
+
+        const ctx = document.getElementById('resourceChart').getContext('2d');
+        new Chart(ctx, config);
+    </script>
+</body>
+</html>
