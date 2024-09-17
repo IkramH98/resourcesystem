@@ -25,12 +25,12 @@ body {
 }
 
 header h1 {
-    font-size: 2.5rem; /* Large but not overwhelming */
-    text-transform: none; /* Keep it normal case for better readability */
-    letter-spacing: 1px; /* Slightly increased spacing */
-    color: white; /* High contrast against the background */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Subtle shadow to make text clearer */
-    padding: 15px; /* Enough padding for spacing */
+    font-size: 2.5rem; 
+    text-transform: none; 
+    letter-spacing: 1px; 
+    color: white; 
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); 
+    padding: 15px;
     margin: 0;
 }
 
@@ -39,7 +39,7 @@ header {
     color: white;
     text-align: center;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 nav {
