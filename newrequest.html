@@ -45,6 +45,7 @@
                         <option value="">Select a resource type</option>
                         <option value="developer">Developer</option>
                         <option value="designer">Designer</option>
+                        <option value="designer">Cloud Architect</option>
                         <option value="project-manager">Project Manager</option>
                         <option value="business-analyst">Business Analyst</option>
                         <option value="qa-tester">QA Tester</option>
@@ -83,34 +84,32 @@
             </form>
         </div>
     </div>
-
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const skillInput = document.getElementById('requiredSkills');
-            const skillTags = document.getElementById('skillTags');
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('newRequestForm');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            // Collect the form data
+            const formData = {
+                projectName: document.getElementById('projectName').value,
+                resourceType: document.getElementById('resourceType').value,
+                department: document.getElementById('resourceType').value,
+                startDate: document.getElementById('startDate').value,
+                endDate: document.getElementById('endDate').value,
+                location: document.getElementById('location').value,
+                additionalInfo: document.getElementById('additionalInfo').value
+            };
+            
+            // Store form data in localStorage (or sessionStorage)
+            localStorage.setItem('newRequestData', JSON.stringify(formData));
 
-            skillInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    addSkill(this.value.trim());
-                    this.value = '';
-                }
-            });
-
-            function addSkill(skill) {
-                if (skill && !document.querySelector(`.skill-tag[data-skill="${skill}"]`)) {
-                    const tag = document.createElement('span');
-                    tag.classList.add('skill-tag');
-                    tag.setAttribute('data-skill', skill);
-                    tag.innerHTML = `${skill} <span class="remove-skill">&times;</span>`;
-                    skillTags.appendChild(tag);
-
-                    tag.querySelector('.remove-skill').addEventListener('click', function() {
-                        tag.remove();
-                    });
-                }
-            }
+            // Redirect to approval.html
+            window.location.href = 'approval.html';
         });
-    </script>
+    });
+</script>
+
 </body>
 </html>
